@@ -10,7 +10,6 @@ options_screen = gui.OptionsWindow()
 howto_screen = gui.InstructionsWindow()
 input_screen = gui.InputWindow()
 story_screen = gui.StoryWindow()
-end_screen = gui.EndWindow()
 holder = ''
 inputs = []
 position = input_screen.position
@@ -83,11 +82,11 @@ def on_key_press(symbol, modifiers):
 
 		elif current_screen == story_screen:
 			story = makestory(template,inputs)
-			with open('yourstory.txt','w') as story_file:
-				story_file.write(story)
-				story_file.close()
+			story_file = open('yourstory.txt','w')
+			story_file.write(story)
+			story_file.close()
+			end_screen = gui.EndWindow()
 			change_screen(end_screen)
-
 
 @window.event
 def on_text(text):
