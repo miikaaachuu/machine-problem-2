@@ -82,33 +82,34 @@ class EndWindow(BaseWindow):
 		self.bgsprite.scale = 0.75
 
 		self.sublabel = pyglet.text.Label('Your story is ready!',
-						font_name='Hesterica',
-						font_size=72,
+						font_name='Helsinki',
+						font_size=48,
 						x =480, y=600,
 						anchor_x='center', anchor_y='center',
+						width = 720, multiline = True,
 						color = violet)
 
-		try:
-			self.output = open('yourstory.txt', 'r').readlines()
-			for x in self.output:
-				storyy = x.strip()
-			self.print = storyy
-			self.story = pyglet.text.Label("{}".format(self.print),
-							font_name = 'Walkway rounded',
-							font_size = 20,
-							x = 480, y = 360,
-							anchor_x = 'center', anchor_y = 'center',
-							width = 860,
-							multiline = True,
-							align = 'center',
-							color = violet)
-		except FileNotFoundError:
-			pass
+		#try:
+		self.output = open('yourstory.txt', 'r').readlines()
+		for x in self.output:
+			storyy = x.strip()
+		self.printing = storyy
+		self.story = pyglet.text.Label("{}".format(self.printing),
+						font_name = 'Gotham Book',
+						font_size = 20,
+						x = 480, y = 300,
+						anchor_x = 'center', anchor_y = 'center',
+						width = 720,
+						multiline = True,
+						align = 'center',
+						color = violet)
+		#except FileNotFoundError:
+		#	pass
 
 	def draw(self):
 		self.bgsprite.draw()
 		self.sublabel.draw()
-		try:
-			self.story.draw()
-		except AttributeError:
-			pass
+		#try:
+		self.story.draw()
+		#except AttributeError:
+		#	pass
